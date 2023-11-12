@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Order</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Change Order:</h1>
+    <a href="/">Back to purchases</a>
+    <form action="/edit_order/{{order.id}}" method="POST">
+        <label for="customer_name">Name:</label>
+        <input type="text" name="customer_name">
+        <hr>
+        <label for="cookie_type">Cookie Type:</label>
+        <input type="text" name="cookie_type">
+        <hr>
+        <label for="number_of_boxes">Number of Boxes:</label>
+        <input type="number" name="number_of_boxes">
+        <hr>
+        <button>Log</button>
+    </form>
+</body>
+</html>

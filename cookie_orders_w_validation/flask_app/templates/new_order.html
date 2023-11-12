@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Order</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Log A New Order</h1>
+    <form action="/create_order" method="POST">
+        <label for="customer_name">Name:</label>
+        <input type="text" name="customer_name">
+        <hr>
+        <label for="cookie_type">Cookie Type:</label>
+        <input type="text" name="cookie_type">
+        <hr>
+        <label for="number_of_boxes">Number of Boxes:</label>
+        <input type="number" name="number_of_boxes">
+        <hr>
+        <button>Log</button>
+    </form>
+    <a href="/">Back to purchases</a>
+</body>
+</html>
